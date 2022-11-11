@@ -46,7 +46,7 @@ namespace Worker
                         if (!pgsql.State.Equals(System.Data.ConnectionState.Open))
                         {
                             Console.WriteLine("Reconnecting DB");
-                            pgsql = OpenDbConnection("Server=tiger-sql.postgres.database.azure.com;Username=postgres;Password=Tiger123;");
+                            pgsql = OpenDbConnection("Server=tiger-sql.postgres.database.azure.com;Port=5432;Username=postgres;Password=Tiger123;");
                         }
                         else
                         { // Normal +1 vote requested
