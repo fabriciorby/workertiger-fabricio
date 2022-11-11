@@ -16,7 +16,7 @@ namespace Worker
         {
             try
             {
-                var pgsql = OpenDbConnection("Server=tiger-sql.postgres.database.azure.com;Username=postgres;Password=Tiger123;");
+                var pgsql = OpenDbConnection("Server=tiger-sql.postgres.database.azure.com;Port=5432;Username=postgres;Password=Tiger123;");
                 var redisConn = OpenRedisConnection("tiger-redis.redis.cache.windows.net,password=CNQov5TmTVOU6zTKSfcQS6saFdkWwaqS9AzCaHfFDqg");
                 var redis = redisConn.GetDatabase();
 
