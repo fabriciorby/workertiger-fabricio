@@ -17,7 +17,7 @@ namespace Worker
             try
             {
                 var pgsql = OpenDbConnection("Server=tiger-sql.postgres.database.azure.com;Username=postgres;Password=Tiger123;");
-                var redisConn = OpenRedisConnection("redis");
+                var redisConn = OpenRedisConnection("tiger-redis.redis.cache.windows.net,password=CNQov5TmTVOU6zTKSfcQS6saFdkWwaqS9AzCaHfFDqg");
                 var redis = redisConn.GetDatabase();
 
                 // Keep alive is not implemented in Npgsql yet. This workaround was recommended:
@@ -34,7 +34,7 @@ namespace Worker
                     // Reconnect redis if down
                     if (redisConn == null || !redisConn.IsConnected) {
                         Console.WriteLine("Reconnecting Redis");
-                        redisConn = OpenRedisConnection("redis");
+                        redisConn = OpenRedisConnection("tiger-redis.redis.cache.windows.net,password=CNQov5TmTVOU6zTKSfcQS6saFdkWwaqS9AzCaHfFDqg");
                         redis = redisConn.GetDatabase();
                     }
                     string json = redis.ListLeftPopAsync("votes").Result;
